@@ -1,0 +1,17 @@
+{
+    "name": "braincrafted/testing-bundle",
+    "type": "symfony-bundle",
+    "description": "Tools for testing Symfony2 bundles",
+    "keywords": ["testing"],
+    "homepage": "http://github.com/braincrafted/testing-bundle",
+    "license": "MIT",
+    "authors": [
+        "name": "Florian Eckerstorfer",
+        "email": "florian@theroadtojoy.at",
+        "homepage": "http://florianeckerstorfer.com",
+        "role": "Developer"
+    ],
+    "require": {
+        "php": ">=5.3.3"
+    }
+}
