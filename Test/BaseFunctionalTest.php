@@ -5,7 +5,7 @@
  * (c) 2012-2013 Florian Eckerstorfer
  */
 
-namespace Braincrafted\TestingBundle\Test;
+namespace Bc\Bundle\TestingBundle\Test;
 
 use Symfony\Bundle\FrameworkBundle\Console\Application;
 use Symfony\Component\Console\Input\ArrayInput;

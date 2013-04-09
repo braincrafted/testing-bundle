@@ -1,9 +1,9 @@
 <?php
 
-namespace Braincrafted\TestingBundle;
+namespace Bc\Bundle\TestingBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
-class BraincraftedTestingBundle extends Bundle
+class BcTestingBundle extends Bundle
 {
 }
