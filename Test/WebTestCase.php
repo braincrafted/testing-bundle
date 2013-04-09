@@ -11,7 +11,7 @@ use Symfony\Bundle\FrameworkBundle\Console\Application;
 use Symfony\Component\Console\Input\ArrayInput;
 
 /**
- * BaseFunctionalTest
+ * WebTestCase
  *
  * @category   Test
  * @package    BcTestingBundle
@@ -20,13 +20,29 @@ use Symfony\Component\Console\Input\ArrayInput;
  * @copyright  2012 Florian Eckerstorfer
  * @license    http://opensource.org/licenses/MIT The MIT License
  */
-abstract class BaseFunctionalTest extends \PHPUnit_Framework_TestCase
+abstract class WebTestCase extends \PHPUnit_Framework_TestCase
 {
     /** @var \AppKernel */
     protected $kernel;
 
     /** @var Application */
     protected $application;
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setUp()
+    {
+        $this->setUpKernel();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function tearDown()
+    {
+        $this->tearDownKernel();
+    }
 
     /**
      * Sets up the kernel.
@@ -50,6 +66,11 @@ abstract class BaseFunctionalTest extends \PHPUnit_Framework_TestCase
         $this->runConsole("doctrine:fixtures:load", array("--no-interaction" => true));
     }
 
+    /**
+     * Shuts down the kernel.
+     *
+     * @return void
+     */
     protected function tearDownKernel()
     {
         if (null !== $this->kernel) {

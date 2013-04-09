@@ -14,7 +14,13 @@
         }
     ],
     "require":          {
-        "php":          ">=5.3.3"
+        "php": ">=5.3.3"
+    },
+    "require-dev": {
+        "symfony/doctrine-bridge":              ">=2.1.0,<2.3-dev",
+        "doctrine/doctrine-bundle":             "~1.0",
+        "doctrine/data-fixtures":               ">=1.0-dev",
+        "doctrine/doctrine-fixtures-bundle":    "dev-master"
     },
     "autoload": {
         "psr-0": { "Bc\\Bundle\\TestingBundle": "" }
