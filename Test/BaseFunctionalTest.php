@@ -1,20 +1,11 @@
 <?php
-
 /**
- * BaseFunctionalTest
+ * This file is part of BraincraftedTestingBundle.
  *
- * @category   Test
- * @package    BraincraftedTestingBundle
- * @subpackage Tests
- * @author     Florian Eckerstorfer
- * @copyright  2012 Florian Eckerstorfer
- * @license    http://opensource.org/licenses/MIT The MIT License
- * @link       http://braincrafted.com Braincrafted
- * @link       http://florianeckerstorfer.com Florian Eckerstorfer
+ * (c) 2012-2013 Florian Eckerstorfer
  */
 
-
-namespace Braincrafted\TestingBundle\Tests;
+namespace Braincrafted\TestingBundle\Test;
 
 use Symfony\Bundle\FrameworkBundle\Console\Application;
 use Symfony\Component\Console\Input\ArrayInput;
@@ -24,21 +15,20 @@ use Symfony\Component\Console\Input\ArrayInput;
  *
  * @category   Test
  * @package    BraincraftedTestingBundle
- * @subpackage Tests
+ * @subpackage Test
  * @author     Florian Eckerstorfer
  * @copyright  2012 Florian Eckerstorfer
  * @license    http://opensource.org/licenses/MIT The MIT License
- * @link       http://braincrafted.com Braincrafted
- * @link       http://florianeckerstorfer.com Florian Eckerstorfer
  */
 abstract class BaseFunctionalTest extends \PHPUnit_Framework_TestCase
 {
-    protected $kernel;
-    protected $application;
+    /** @var Application */
+    private $application;
 
     /**
      * Sets up the kernel.
      *
+     * @return void
      */
     protected function setUpKernel()
     {
@@ -46,8 +36,9 @@ abstract class BaseFunctionalTest extends \PHPUnit_Framework_TestCase
         $kernel->boot();
         $this->application = new Application($kernel);
         $this->application->setAutoExit(false);
-        $this->runConsole("doctrine:mongodb:schema:drop");
-        $this->runConsole("davidbadura:fixtures:load");
+        $this->runConsole("doctrine:schema:drop", array("--force" => true));
+        $this->runConsole("doctrine:schema:create");
+        $this->runConsole("doctrine:fixtures:load", array("--no-interaction" => true));
     }
 
     /**
@@ -58,7 +49,7 @@ abstract class BaseFunctionalTest extends \PHPUnit_Framework_TestCase
      *
      * @return integer 0 if everything went fine, a positive integer otherwise
      */
-    protected function runConsole($command, Array $options = array())
+    protected function runConsole($command, array $options = array())
     {
         $options["-e"] = "test";
         $options["-q"] = null;
@@ -69,7 +60,7 @@ abstract class BaseFunctionalTest extends \PHPUnit_Framework_TestCase
     /**
      * Returns the container.
      *
-     * @return ContainerInterface The container
+     * @return \Symfony\Component\DependencyInjection\ContainerInterface The container
      */
     public function getContainer()
     {
