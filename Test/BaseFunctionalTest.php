@@ -38,12 +38,19 @@ abstract class BaseFunctionalTest extends \PHPUnit_Framework_TestCase
         $this->kernel = $this->createKernel(array('environment' => 'test', 'debug' => true));
         $this->kernel->boot();
 
-        $this->application = new Application($kernel);
+        $this->application = new Application($this->kernel);
         $this->application->setAutoExit(false);
 
         $this->runConsole("doctrine:schema:drop", array("--force" => true));
         $this->runConsole("doctrine:schema:create");
         $this->runConsole("doctrine:fixtures:load", array("--no-interaction" => true));
+    }
+
+    protected function tearDownKernel()
+    {
+        if (null !== $this->kernel) {
+            $this->kernel->shutdown();
+        }
     }
 
     /**
@@ -71,12 +78,9 @@ abstract class BaseFunctionalTest extends \PHPUnit_Framework_TestCase
      */
     protected function createClient(array $options = array(), array $server = array())
     {
-        if (null !== $this->kernel) {
-            $this->kernel->shutdown();
+        if (null === $this->kernel) {
+            $this->setUpKernel();
         }
-
-        $this->kernel = $this->createKernel($options);
-        $this->kernel->boot();
 
         $client = $this->getContainer()->get('test.client');
         $client->setServerParameters($server);
