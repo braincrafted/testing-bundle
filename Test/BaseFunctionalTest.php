@@ -35,6 +35,10 @@ abstract class BaseFunctionalTest extends \PHPUnit_Framework_TestCase
      */
     protected function setUpKernel()
     {
+        if (null !== $this->kernel) {
+            $this->tearDownKernel();
+        }
+
         $this->kernel = $this->createKernel(array('environment' => 'test', 'debug' => true));
         $this->kernel->boot();
 
