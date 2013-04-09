@@ -22,8 +22,11 @@ use Symfony\Component\Console\Input\ArrayInput;
  */
 abstract class BaseFunctionalTest extends \PHPUnit_Framework_TestCase
 {
+    /** @var \AppKernel */
+    protected $kernel;
+
     /** @var Application */
-    private $application;
+    protected $application;
 
     /**
      * Sets up the kernel.
@@ -32,13 +35,53 @@ abstract class BaseFunctionalTest extends \PHPUnit_Framework_TestCase
      */
     protected function setUpKernel()
     {
-        $kernel = new \AppKernel("test", true);
-        $kernel->boot();
+        $this->kernel = $this->createKernel(array('environment' => 'test', 'debug' => true));
+        $this->kernel->boot();
+
         $this->application = new Application($kernel);
         $this->application->setAutoExit(false);
+
         $this->runConsole("doctrine:schema:drop", array("--force" => true));
         $this->runConsole("doctrine:schema:create");
         $this->runConsole("doctrine:fixtures:load", array("--no-interaction" => true));
+    }
+
+    /**
+     * Creates an AppKernel.
+     *
+     * @param  array  $options The array with options for the kernel.
+     *
+     * @return \AppKernel The app kernel
+     */
+    protected function createKernel(array $options = array())
+    {
+        return new \AppKernel(
+            isset($options['environment']) ? $options['environment'] : 'test',
+            isset($options['debug']) ? $options['debug'] : true
+        );
+    }
+
+    /**
+     * Creates a Client.
+     *
+     * @param array $options An array of options to pass to the createKernel class
+     * @param array $server  An array of server parameters
+     *
+     * @return Client A Client instance
+     */
+    protected function createClient(array $options = array(), array $server = array())
+    {
+        if (null !== $this->kernel) {
+            $this->kernel->shutdown();
+        }
+
+        $this->kernel = $this->createKernel($options);
+        $this->kernel->boot();
+
+        $client = $this->getContainer()->get('test.client');
+        $client->setServerParameters($server);
+
+        return $client;
     }
 
     /**
@@ -64,6 +107,6 @@ abstract class BaseFunctionalTest extends \PHPUnit_Framework_TestCase
      */
     public function getContainer()
     {
-        return $this->application->getKernel()->getContainer();
+        return $this->kernel->getContainer();
     }
 }
