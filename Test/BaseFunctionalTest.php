@@ -1,6 +1,6 @@
 <?php
 /**
- * This file is part of BraincraftedTestingBundle.
+ * This file is part of BcTestingBundle.
  *
  * (c) 2012-2013 Florian Eckerstorfer
  */
@@ -14,7 +14,7 @@ use Symfony\Component\Console\Input\ArrayInput;
  * BaseFunctionalTest
  *
  * @category   Test
- * @package    BraincraftedTestingBundle
+ * @package    BcTestingBundle
  * @subpackage Test
  * @author     Florian Eckerstorfer
  * @copyright  2012 Florian Eckerstorfer
