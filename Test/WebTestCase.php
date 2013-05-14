@@ -9,6 +9,7 @@ namespace Bc\Bundle\TestingBundle\Test;
 
 use Symfony\Bundle\FrameworkBundle\Console\Application;
 use Symfony\Component\Console\Input\ArrayInput;
+use Symfony\Component\DomCrawler\Crawler;
 
 /**
  * WebTestCase
@@ -87,6 +88,9 @@ abstract class WebTestCase extends \PHPUnit_Framework_TestCase
      */
     protected function createKernel(array $options = array())
     {
+        if (!class_exists('\AppKernel')) {
+            require_once $_SERVER['KERNEL_DIR'].'/AppKernel.php';
+        }
         return new \AppKernel(
             isset($options['environment']) ? $options['environment'] : 'test',
             isset($options['debug']) ? $options['debug'] : true
@@ -127,6 +131,24 @@ abstract class WebTestCase extends \PHPUnit_Framework_TestCase
         $options["-q"] = null;
         $options = array_merge($options, array('command' => $command));
         return $this->application->run(new ArrayInput($options));
+    }
+
+    /**
+     * Returns the HTML code of the given crawler as string.
+     *
+     * @param Crawler $crawler The crawler
+     *
+     * @return string The HTML code of the crawler
+     */
+    protected function renderCrawlerHtml(Crawler $crawler)
+    {
+        $html = '';
+
+        foreach ($crawler as $domElement) {
+            $html .= $domElement->ownerDocument->saveHTML($domElement);
+        }
+
+        return $html;
     }
 
     /**

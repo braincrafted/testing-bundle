@@ -71,6 +71,12 @@ You can also access the dependency injection container of the kernel:
 
     $container = $this->getContainer();
 
+### Render Crawler HTML
+
+The `WebTestCase` class also has an nice helper method that returns the HTML code of a crawler. You can use it in all test cases that subclass `Bc\Bundle\TestingBundle\Test\WebTestCase`:
+
+    echo $this->renderCrawlerHtml($crawler);
+
 
 License
 -------
