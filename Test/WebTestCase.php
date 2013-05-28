@@ -59,9 +59,11 @@ abstract class WebTestCase extends \PHPUnit_Framework_TestCase
         $this->kernel = $this->createKernel(array('environment' => 'test', 'debug' => true));
         $this->kernel->boot();
 
+        // Create Application
         $this->application = new Application($this->kernel);
         $this->application->setAutoExit(false);
 
+        // Reset database and load fixtures
         $this->runConsole("doctrine:schema:drop", array("--force" => true));
         $this->runConsole("doctrine:schema:create");
         $this->runConsole("doctrine:fixtures:load", array("--no-interaction" => true));

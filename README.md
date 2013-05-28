@@ -23,6 +23,27 @@ You need to add bundle to your `composer.json` file:
         }
     }
 
+Add the bundle to your kernel (only activate the bundle in the dev and test environment, you don't need to have it activated in the production environment):
+
+    // app/AppKernel.php
+
+    class AppKernel extends Kernel
+    {
+        public function registerBundles()
+        {
+            // ...
+
+            if (in_array($this->getEnvironment(), array('dev', 'test'))) {
+                $bundles[] = new Bc\Bundle\TestingBundle\BcTestingBundle($this);
+                // ...
+            }
+
+            // ...
+        }
+
+        // ...
+    }
+
 
 Usage
 -----
@@ -71,11 +92,17 @@ You can also access the dependency injection container of the kernel:
 
     $container = $this->getContainer();
 
+
 ### Render Crawler HTML
 
 The `WebTestCase` class also has an nice helper method that returns the HTML code of a crawler. You can use it in all test cases that subclass `Bc\Bundle\TestingBundle\Test\WebTestCase`:
 
     echo $this->renderCrawlerHtml($crawler);
+
+
+### Testing Translation Keys
+
+`BcTestingBundle` installs an alternative translator that is only activated in the `test` environment. This translator returns the translation key instead of the translated text. That way you can use the translation keys in your functional tests instead of the translated text.
 
 
 License
