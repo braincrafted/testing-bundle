@@ -23,6 +23,14 @@ You need to add bundle to your `composer.json` file:
         }
     }
 
+The master branch has been updated to be compatible with Symfony 2.3. If you are using Symfony <2.3 you can use the `0.1` branch.
+
+    {
+        "require-dev":  {
+            "braincrafted/testing-bundle": "0.1.*"
+        }
+    }
+
 Add the bundle to your kernel (only activate the bundle in the dev and test environment, you don't need to have it activated in the production environment):
 
     // app/AppKernel.php
