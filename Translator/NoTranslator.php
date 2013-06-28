@@ -47,7 +47,7 @@ class NoTranslator implements TranslatorInterface
         return '--';
     }
 
-    public function setFallbackLocale($locale)
+    public function setFallbackLocales($locale)
     {
     }
 
