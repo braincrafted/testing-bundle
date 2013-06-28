@@ -14,7 +14,8 @@
         }
     ],
     "require":          {
-        "php": ">=5.3.3"
+        "php":              ">=5.3.3",
+        "symfony/symfony":  "<2.3"
     },
     "require-dev": {
         "symfony/doctrine-bridge":              ">=2.1.0,<2.3-dev",
