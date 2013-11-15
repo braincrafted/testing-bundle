@@ -1,11 +1,11 @@
 <?php
 /*
- * This file is part of BcTestingBundle.
+ * This file is part of BraincraftedTestingBundle.
  *
- * (c) Florian Eckerstorfer
+ * (c) 2013 Florian Eckerstorfer <florian@eckerstorfer.co>
  */
 
-namespace Bc\Bundle\TestingBundle\Translator;
+namespace Braincrafted\Bundle\TestingBundle\Translator;
 
 use Symfony\Component\Translation\TranslatorInterface;
 

@@ -1,14 +1,14 @@
 <?php
 
-namespace Bc\Bundle\TestingBundle;
+namespace Braincrafted\Bundle\TestingBundle;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 use Symfony\Component\HttpKernel\KernelInterface;
 
-use Bc\Bundle\TestingBundle\DependencyInjection\Compiler\TranslatorCompilerPass;
+use Braincrafted\Bundle\TestingBundle\DependencyInjection\Compiler\TranslatorCompilerPass;
 
-class BcTestingBundle extends Bundle
+class BraincraftedTestingBundle extends Bundle
 {
     /** @var KernelInterface */
     private $kernel;

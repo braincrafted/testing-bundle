@@ -1,6 +1,6 @@
 <?php
 
-namespace Bc\Bundle\TestingBundle\DependencyInjection\Compiler;
+namespace Braincrafted\Bundle\TestingBundle\DependencyInjection\Compiler;
 
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -28,7 +28,7 @@ class TranslatorCompilerPass implements CompilerPassInterface
     {
         if ('test' === $this->kernel->getEnvironment()) {
             $definition = $container->getDefinition('translator.default');
-            $definition->setClass('Bc\Bundle\TestingBundle\Translator\NoTranslator');
+            $definition->setClass('Braincrafted\Bundle\TestingBundle\Translator\NoTranslator');
         }
     }
 }

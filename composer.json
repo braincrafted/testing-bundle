@@ -24,7 +24,7 @@
         "doctrine/doctrine-fixtures-bundle":    "dev-master"
     },
     "autoload": {
-        "psr-0": { "Bc\\Bundle\\TestingBundle": "" }
+        "psr-0": { "Braincrafted\\Bundle\\TestingBundle": "" }
     },
-    "target-dir": "Bc/Bundle/TestingBundle"
+    "target-dir": "Braincrafted/Bundle/TestingBundle"
 }

@@ -1,11 +1,11 @@
 <?php
 /**
- * This file is part of BcTestingBundle.
+ * This file is part of BraincraftedTestingBundle.
  *
  * (c) 2012-2013 Florian Eckerstorfer
  */
 
-namespace Bc\Bundle\TestingBundle\Test;
+namespace Braincrafted\Bundle\TestingBundle\Test;
 
 use Symfony\Bundle\FrameworkBundle\Console\Application;
 use Symfony\Component\Console\Input\ArrayInput;
@@ -15,7 +15,7 @@ use Symfony\Component\DomCrawler\Crawler;
  * WebTestCase
  *
  * @category   Test
- * @package    BcTestingBundle
+ * @package    BraincraftedTestingBundle
  * @subpackage Test
  * @author     Florian Eckerstorfer
  * @copyright  2012 Florian Eckerstorfer

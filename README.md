@@ -1,4 +1,4 @@
-BcTestingBundle
+BraincraftedTestingBundle
 =========================
 
 Handcrafted in Vienna by [Florian Eckerstorfer](http://braincrafted.com).
@@ -42,7 +42,7 @@ Add the bundle to your kernel (only activate the bundle in the dev and test envi
             // ...
 
             if (in_array($this->getEnvironment(), array('dev', 'test'))) {
-                $bundles[] = new Bc\Bundle\TestingBundle\BcTestingBundle($this);
+                $bundles[] = new Braincrafted\Bundle\TestingBundle\BraincraftedTestingBundle($this);
                 // ...
             }
 
@@ -56,12 +56,12 @@ Add the bundle to your kernel (only activate the bundle in the dev and test envi
 Usage
 -----
 
-The test cases that you want isolate must extend `Bc\Bundle\TestingBundle\Test\WebTestCase`.
+The test cases that you want isolate must extend `Braincrafted\Bundle\TestingBundle\Test\WebTestCase`.
 
     // AcmeDemoBundle/Tests/DemoTest.php
     namespace AcmeDemoBundle\Tests;
 
-    use Bc\Bundle\TestingBundle\Test\WebTestCase;
+    use Braincrafted\Bundle\TestingBundle\Test\WebTestCase;
 
     class DemoTest extends WebTestCase
     {
@@ -73,7 +73,7 @@ By default `WebTestCase` provides a `setUp()` and a `tearDown()` method that boo
     // AcmeDemoBundle/Tests/DemoTest.php
     namespace AcmeDemoBundle\Tests;
 
-    use Bc\Bundle\TestingBundle\Test\WebTestCase;
+    use Braincrafted\Bundle\TestingBundle\Test\WebTestCase;
 
     class DemoTest extends WebTestCase
     {
@@ -103,14 +103,14 @@ You can also access the dependency injection container of the kernel:
 
 ### Render Crawler HTML
 
-The `WebTestCase` class also has an nice helper method that returns the HTML code of a crawler. You can use it in all test cases that subclass `Bc\Bundle\TestingBundle\Test\WebTestCase`:
+The `WebTestCase` class also has an nice helper method that returns the HTML code of a crawler. You can use it in all test cases that subclass `Braincrafted\Bundle\TestingBundle\Test\WebTestCase`:
 
     echo $this->renderCrawlerHtml($crawler);
 
 
 ### Testing Translation Keys
 
-`BcTestingBundle` installs an alternative translator that is only activated in the `test` environment. This translator returns the translation key instead of the translated text. That way you can use the translation keys in your functional tests instead of the translated text.
+`BraincraftedTestingBundle` installs an alternative translator that is only activated in the `test` environment. This translator returns the translation key instead of the translated text. That way you can use the translation keys in your functional tests instead of the translated text.
 
 
 License
