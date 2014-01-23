@@ -17,96 +17,106 @@ Installation
 
 You need to add bundle to your `composer.json` file:
 
-    {
-        "require-dev":  {
-            "braincrafted/testing-bundle": "dev-master"
-        }
+```json
+{
+    "require-dev": {
+        "braincrafted/testing-bundle": "dev-master"
     }
+}
+```
 
 The master branch has been updated to be compatible with Symfony 2.3. If you are using Symfony <2.3 you can use the `0.1` branch.
 
-    {
-        "require-dev":  {
-            "braincrafted/testing-bundle": "0.1.*"
-        }
+```json
+{
+    "require-dev": {
+        "braincrafted/testing-bundle": "0.1.*"
     }
+}
+```
 
 Add the bundle to your kernel (only activate the bundle in the dev and test environment, you don't need to have it activated in the production environment):
 
-    // app/AppKernel.php
+```php
+// app/AppKernel.php
 
-    class AppKernel extends Kernel
+class AppKernel extends Kernel
+{
+    public function registerBundles()
     {
-        public function registerBundles()
-        {
-            // ...
-
-            if (in_array($this->getEnvironment(), array('dev', 'test'))) {
-                $bundles[] = new Braincrafted\Bundle\TestingBundle\BraincraftedTestingBundle($this);
-                // ...
-            }
-
+        // ...
+        if (in_array($this->getEnvironment(), array('dev', 'test'))) {
+            $bundles[] = new Braincrafted\Bundle\TestingBundle\BraincraftedTestingBundle($this);
             // ...
         }
-
         // ...
     }
-
+    // ...
+}
+```
 
 Usage
 -----
 
 The test cases that you want isolate must extend `Braincrafted\Bundle\TestingBundle\Test\WebTestCase`.
 
-    // AcmeDemoBundle/Tests/DemoTest.php
-    namespace AcmeDemoBundle\Tests;
+```php
+// AcmeDemoBundle/Tests/DemoTest.php
+namespace AcmeDemoBundle\Tests;
 
-    use Braincrafted\Bundle\TestingBundle\Test\WebTestCase;
+use Braincrafted\Bundle\TestingBundle\Test\WebTestCase;
 
-    class DemoTest extends WebTestCase
-    {
-        // ...
-    }
+class DemoTest extends WebTestCase
+{
+    // ...
+}
+```
 
 By default `WebTestCase` provides a `setUp()` and a `tearDown()` method that boot respectively shut down the kernel. However, if you have your own `setUp()` and/or `tearDown()` methods in your test case you need to manually do this.
 
-    // AcmeDemoBundle/Tests/DemoTest.php
-    namespace AcmeDemoBundle\Tests;
+```php
+// AcmeDemoBundle/Tests/DemoTest.php
+namespace AcmeDemoBundle\Tests;
 
-    use Braincrafted\Bundle\TestingBundle\Test\WebTestCase;
+use Braincrafted\Bundle\TestingBundle\Test\WebTestCase;
 
-    class DemoTest extends WebTestCase
+class DemoTest extends WebTestCase
+{
+    public function setUp()
     {
-        public function setUp()
-        {
-            $this->setUpKernel();
-            // ...
-        }
-
-        public function tearDown()
-        {
-            $this->tearDownKernel();
-            // ...
-        }
+        $this->setUpKernel();
+        // ...
     }
+
+    public function tearDown()
+    {
+        $this->tearDownKernel();
+        // ...
+    }
+}
+```
 
 If you require a client in your test case, you can use the `createClient()` method:
 
-    $client = $this->createClient();
+```php
+$client = $this->createClient();
+```
 
 `createClient()` will call `setUpKernel()` when no kernel is available at this point.
 
 You can also access the dependency injection container of the kernel:
 
-    $container = $this->getContainer();
-
+```php
+$container = $this->getContainer();
+```
 
 ### Render Crawler HTML
 
 The `WebTestCase` class also has an nice helper method that returns the HTML code of a crawler. You can use it in all test cases that subclass `Braincrafted\Bundle\TestingBundle\Test\WebTestCase`:
 
-    echo $this->renderCrawlerHtml($crawler);
-
+```php
+echo $this->renderCrawlerHtml($crawler);
+```
 
 ### Testing Translation Keys
 
