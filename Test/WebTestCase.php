@@ -8,6 +8,7 @@
 namespace Braincrafted\Bundle\TestingBundle\Test;
 
 use Symfony\Bundle\FrameworkBundle\Console\Application;
+use Symfony\Component\BrowserKit\Client;
 use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\DomCrawler\Crawler;
 
@@ -23,7 +24,7 @@ use Symfony\Component\DomCrawler\Crawler;
  */
 abstract class WebTestCase extends \PHPUnit_Framework_TestCase
 {
-    /** @var \AppKernel */
+    /** @var \Symfony\Component\HttpKernel\Kernel */
     protected $kernel;
 
     /** @var Application */
@@ -84,15 +85,16 @@ abstract class WebTestCase extends \PHPUnit_Framework_TestCase
     /**
      * Creates an AppKernel.
      *
-     * @param  array  $options The array with options for the kernel.
+     * @param array $options The array with options for the kernel.
      *
-     * @return \AppKernel The app kernel
+     * @return \Symfony\Component\HttpKernel\Kernel The app kernel
      */
     protected function createKernel(array $options = array())
     {
         if (!class_exists('\AppKernel')) {
             require_once $_SERVER['KERNEL_DIR'].'/AppKernel.php';
         }
+
         return new \AppKernel(
             isset($options['environment']) ? $options['environment'] : 'test',
             isset($options['debug']) ? $options['debug'] : true
@@ -110,7 +112,7 @@ abstract class WebTestCase extends \PHPUnit_Framework_TestCase
     protected function createClient(array $options = array(), array $server = array())
     {
         if (null === $this->kernel) {
-            $this->setUpKernel();
+            $this->setUpKernel($options);
         }
 
         $client = $this->getContainer()->get('test.client');

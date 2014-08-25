@@ -1,13 +1,15 @@
 BraincraftedTestingBundle
 =========================
 
-Handcrafted in Vienna by [Florian Eckerstorfer](http://braincrafted.com).
+Handcrafted in Vienna by [Florian Eckerstorfer](https://florian.ec).
 
 
 About
 -----
 
-This bundle currently provides an abstract class to better isolate functional tests of Symfony2 applications. The `WebTestCase` class drops the schema, recreates it and loads all fixture files. Currently [DoctrineFixturesBundle](https://github.com/doctrine/DoctrineFixturesBundle) is a required dependency of this bundle.
+This bundle currently provides an abstract class to better isolate functional tests of Symfony2 applications. The
+`WebTestCase` class drops the schema, recreates it and loads all fixture files. Currently
+[DoctrineFixturesBundle](https://github.com/doctrine/DoctrineFixturesBundle) is a required dependency of this bundle.
 
 At some point this bundle may contain other useful classes, services and helpers related to testing.
 
@@ -20,12 +22,15 @@ You need to add bundle to your `composer.json` file:
 ```json
 {
     "require-dev": {
-        "braincrafted/testing-bundle": "dev-master"
+        "braincrafted/testing-bundle": "@stable"
     }
 }
 ```
 
-The master branch has been updated to be compatible with Symfony 2.3. If you are using Symfony <2.3 you can use the `0.1` branch.
+*Tip: You should replace `@stable` with a specific [version](https://github.com/braincrafted/testing-bundle/releases).*
+
+The master branch has been updated to be compatible with Symfony 2.3. If you are using Symfony <2.3 you can use the
+`0.1` branch.
 
 ```json
 {
@@ -35,7 +40,8 @@ The master branch has been updated to be compatible with Symfony 2.3. If you are
 }
 ```
 
-Add the bundle to your kernel (only activate the bundle in the dev and test environment, you don't need to have it activated in the production environment):
+Add the bundle to your kernel (only activate the bundle in the dev and test environment, you don't need to have it
+activated in the production environment):
 
 ```php
 // app/AppKernel.php
@@ -72,7 +78,8 @@ class DemoTest extends WebTestCase
 }
 ```
 
-By default `WebTestCase` provides a `setUp()` and a `tearDown()` method that boot respectively shut down the kernel. However, if you have your own `setUp()` and/or `tearDown()` methods in your test case you need to manually do this.
+By default `WebTestCase` provides a `setUp()` and a `tearDown()` method that boot respectively shut down the kernel.
+However, if you have your own `setUp()` and/or `tearDown()` methods in your test case you need to manually do this.
 
 ```php
 // AcmeDemoBundle/Tests/DemoTest.php
@@ -112,7 +119,8 @@ $container = $this->getContainer();
 
 ### Render Crawler HTML
 
-The `WebTestCase` class also has an nice helper method that returns the HTML code of a crawler. You can use it in all test cases that subclass `Braincrafted\Bundle\TestingBundle\Test\WebTestCase`:
+The `WebTestCase` class also has an nice helper method that returns the HTML code of a crawler. You can use it in all
+test cases that subclass `Braincrafted\Bundle\TestingBundle\Test\WebTestCase`:
 
 ```php
 echo $this->renderCrawlerHtml($crawler);
@@ -120,7 +128,23 @@ echo $this->renderCrawlerHtml($crawler);
 
 ### Testing Translation Keys
 
-`BraincraftedTestingBundle` installs an alternative translator that is only activated in the `test` environment. This translator returns the translation key instead of the translated text. That way you can use the translation keys in your functional tests instead of the translated text.
+`BraincraftedTestingBundle` installs an alternative translator that is only activated in the `test` environment. This
+translator returns the translation key instead of the translated text. That way you can use the translation keys in your
+functional tests instead of the translated text.
+
+
+Change Log
+----------
+
+### Version 0.3.1 (25 August 2014)
+
+- Fixed type hint for `WebTestCase::createClient()` method
+- Pass `$options` to `WebTestCase::createKernel()` in `WebTestCase::createClient()`
+
+
+### Version 0.3 (18 November 2013)
+
+- Changed namespace to `Braincrafted`.
 
 
 License
@@ -128,14 +152,13 @@ License
 
 ### The MIT License (MIT)
 
-Copyright (c) 2012-2013 Florian Eckerstorfer
+Copyright (c) 2012-2014 Florian Eckerstorfer
 
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+ documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the
+ Software.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/braincrafted/testing-bundle/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
-
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE
+WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
