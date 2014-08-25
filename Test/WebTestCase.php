@@ -112,7 +112,7 @@ abstract class WebTestCase extends \PHPUnit_Framework_TestCase
     protected function createClient(array $options = array(), array $server = array())
     {
         if (null === $this->kernel) {
-            $this->setUpKernel();
+            $this->setUpKernel($options);
         }
 
         $client = $this->getContainer()->get('test.client');

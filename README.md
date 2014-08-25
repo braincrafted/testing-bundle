@@ -139,6 +139,7 @@ Change Log
 ### Version 0.3.1 (25 August 2014)
 
 - Fixed type hint for `WebTestCase::createClient()` method
+- Pass `$options` to `WebTestCase::createKernel()` in `WebTestCase::createClient()`
 
 
 ### Version 0.3 (18 November 2013)
