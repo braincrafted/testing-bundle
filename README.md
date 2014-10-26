@@ -136,6 +136,10 @@ functional tests instead of the translated text.
 Change Log
 ----------
 
+### Version 0.3.2 (26 October 2014)
+
+- [#10](https://github.com/braincrafted/testing-bundle/pull/10) Try to find `AppKernel.php` in a standard path before falling back to `KERNEL_DIR` constant (by [florianeckerstorfer](https://github.com/florianeckerstorfer))
+
 ### Version 0.3.1 (25 August 2014)
 
 - Fixed type hint for `WebTestCase::createClient()` method
