@@ -91,6 +91,9 @@ abstract class WebTestCase extends \PHPUnit_Framework_TestCase
      */
     protected function createKernel(array $options = array())
     {
+        if (!class_exists('\AppKernel') && file_exists(__DIR__.'/../../../../../../../app/AppKernel.php')) {
+            require_once __DIR__.'/../../../../../../../app/AppKernel.php';
+        }
         if (!class_exists('\AppKernel')) {
             require_once $_SERVER['KERNEL_DIR'].'/AppKernel.php';
         }
