@@ -47,8 +47,8 @@ right version of TestingBundle.
             <td><code>v0.1.*</code></td>
         </tr>
         <tr>
-            <td><code>v2.4.*</code><br><code>v2.5.*</code></td>
-            <td><code>v0.2.*</code><br><code>v0.3.*</code></td>
+            <td><code>v2.4.*-v2.5.*</code></td>
+            <td><code>v0.2.*-v0.3.*</code></td>
         </tr>
         <tr>
             <td><code>v2.6+</code></td>
