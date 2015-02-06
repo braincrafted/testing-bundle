@@ -2,7 +2,7 @@
 /**
  * This file is part of BraincraftedTestingBundle.
  *
- * (c) 2012-2013 Florian Eckerstorfer
+ * (c) 2012-2015 Florian Eckerstorfer
  */
 
 namespace Braincrafted\Bundle\TestingBundle\Test;

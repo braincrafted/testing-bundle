@@ -2,7 +2,7 @@
 /*
  * This file is part of BraincraftedTestingBundle.
  *
- * (c) 2013 Florian Eckerstorfer <florian@eckerstorfer.co>
+ * (c) 2013-2015 Florian Eckerstorfer <florian@eckerstorfer.co>
  */
 
 namespace Braincrafted\Bundle\TestingBundle\Translator;

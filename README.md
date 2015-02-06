@@ -156,6 +156,10 @@ functional tests instead of the translated text.
 Change Log
 ----------
 
+### Version 0.4 (6 February 2015)
+
+- Add compatibility with Symfony 2.6
+
 ### Version 0.3.3 (6 February 2015)
 
 - Update to `composer.json` to reflect that the `0.3` branch is not compatible with Symfony 2.6.
@@ -180,7 +184,7 @@ License
 
 ### The MIT License (MIT)
 
-Copyright (c) 2012-2014 Florian Eckerstorfer
+Copyright (c) 2012-2015 Florian Eckerstorfer
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
  documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
