@@ -7,7 +7,6 @@
 
 namespace Braincrafted\Bundle\TestingBundle\Translator;
 
-use Symfony\Component\Translation\MessageCatalogueInterface;
 use Symfony\Component\Translation\TranslatorBagInterface;
 use Symfony\Component\Translation\TranslatorInterface;
 
