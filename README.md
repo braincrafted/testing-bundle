@@ -29,16 +29,36 @@ You need to add bundle to your `composer.json` file:
 
 *Tip: You should replace `@stable` with a specific [version](https://github.com/braincrafted/testing-bundle/releases).*
 
+### Compatibility
+
+TestingBundle is developed to always work with the latest version of Symfony. The following table helps you choose the
+right version of TestingBundle.
+
+<table>
+    <thead>
+        <tr>
+            <td>Symfony version</td>
+            <td>TestingBundle version</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>v2.3.*</code></td>
+            <td><code>v0.1.*</code></td>
+        </tr>
+        <tr>
+            <td><code>v2.4.*</code>-<code>v2.5.*</code></td>
+            <td><code>v0.2.*</code>-<code>v0.3.*</code></td>
+        </tr>
+        <tr>
+            <td><code>v2.6+</code></td>
+            <td><code>v0.4+</code></td>
+        </tr>
+    </tbody>
+</table>
+
 The master branch has been updated to be compatible with Symfony 2.3. If you are using Symfony <2.3 you can use the
 `0.1` branch.
-
-```json
-{
-    "require-dev": {
-        "braincrafted/testing-bundle": "0.1.*"
-    }
-}
-```
 
 Add the bundle to your kernel (only activate the bundle in the dev and test environment, you don't need to have it
 activated in the production environment):
