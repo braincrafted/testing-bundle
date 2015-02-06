@@ -7,6 +7,8 @@
 
 namespace Braincrafted\Bundle\TestingBundle\Translator;
 
+use Symfony\Component\Translation\MessageCatalogueInterface;
+use Symfony\Component\Translation\TranslatorBagInterface;
 use Symfony\Component\Translation\TranslatorInterface;
 
 /**
@@ -14,7 +16,7 @@ use Symfony\Component\Translation\TranslatorInterface;
  *
  * @author Florian Eckerstorfer <florian@eckerstorfer.co>
  */
-class NoTranslator implements TranslatorInterface
+class NoTranslator implements TranslatorInterface, TranslatorBagInterface
 {
     /**
      * {@inheritDoc}
@@ -52,6 +54,13 @@ class NoTranslator implements TranslatorInterface
     }
 
     public function addResource($resource)
+    {
+    }
+
+    /**
+     * {@inheritDoc
+     */
+    public function getCatalogue($locale = null)
     {
     }
 }
