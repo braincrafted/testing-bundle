@@ -136,6 +136,10 @@ functional tests instead of the translated text.
 Change Log
 ----------
 
+### Version 0.3.3 (6 February 2015)
+
+- Update to `composer.json` to reflect that the `0.3` branch is not compatible with Symfony 2.6.
+
 ### Version 0.3.2 (26 October 2014)
 
 - [#10](https://github.com/braincrafted/testing-bundle/pull/10) Try to find `AppKernel.php` in a standard path before falling back to `KERNEL_DIR` constant (by [florianeckerstorfer](https://github.com/florianeckerstorfer))
