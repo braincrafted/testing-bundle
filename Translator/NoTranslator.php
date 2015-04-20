@@ -7,6 +7,7 @@
 
 namespace Braincrafted\Bundle\TestingBundle\Translator;
 
+use Symfony\Component\Translation\MessageCatalogue;
 use Symfony\Component\Translation\TranslatorBagInterface;
 use Symfony\Component\Translation\TranslatorInterface;
 
@@ -17,6 +18,16 @@ use Symfony\Component\Translation\TranslatorInterface;
  */
 class NoTranslator implements TranslatorInterface, TranslatorBagInterface
 {
+    /**
+     * @var MessageCatalogue
+     */
+    protected $catalogue;
+
+    public function __construct()
+    {
+        $this->catalogue = new MessageCatalogue('--');
+    }
+
     /**
      * {@inheritDoc}
      */
@@ -61,5 +72,6 @@ class NoTranslator implements TranslatorInterface, TranslatorBagInterface
      */
     public function getCatalogue($locale = null)
     {
+        return $this->catalogue;
     }
 }
