@@ -156,6 +156,10 @@ functional tests instead of the translated text.
 Change Log
 ----------
 
+### Version 0.4.1 (20 April 2015)
+
+- `NoTranslator` returns message catalogue
+
 ### Version 0.4 (6 February 2015)
 
 - Add compatibility with Symfony 2.6
