@@ -156,6 +156,10 @@ functional tests instead of the translated text.
 Change Log
 ----------
 
+### Version 0.4.2 (15 February 2016)
+
+- `NoTranslator` implements empty `setConfigCacheFactory()` method for compatibility
+
 ### Version 0.4.1 (20 April 2015)
 
 - `NoTranslator` returns message catalogue
