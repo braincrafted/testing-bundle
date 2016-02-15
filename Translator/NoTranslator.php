@@ -74,4 +74,11 @@ class NoTranslator implements TranslatorInterface, TranslatorBagInterface
     {
         return $this->catalogue;
     }
+
+    /**
+     * @param mixed $factory
+     */
+    public function setConfigCacheFactory($factory)
+    {
+    }
 }
